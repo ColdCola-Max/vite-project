@@ -1,0 +1,1 @@
+*{margin:0;padding:0;box-sizing:border-box;list-style:none;text-decoration:none}.box{display:flex;flex-direction:column}.box .list li{padding:0 10px;display:flex}.box .list li .img img{pointer-events:none;width:100px}.box .list li .content{display:flex;flex-direction:column;justify-content:space-around;margin-left:10px;pointer-events:none}
