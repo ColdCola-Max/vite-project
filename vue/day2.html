@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        background-color: #F1B8B5;
+    }
+
+    h1 {
+        background-color: #ED774F;
+        width: 180px;
+        height: 50px;
+        margin: 10px auto 10px;
+    }
+
+    .box {
+        width: 500px;
+        height: 450px;
+        margin: 80px auto;
+        border-radius: 10px;
+        background-color: #FDFDFD;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    input {
+        outline: 0;
+        border: 0;
+        border-bottom: 2px dashed pink;
+
+    }
+
+    ul {
+        min-height: 250px;
+        width: 100%;
+        background-color: rgba(231, 231, 231, 0.932);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li input {
+        margin-right: 10px;
+    }
+
+    button {
+        margin-left: 10px;
+        background-color: skyblue;
+        width: 50px;
+        height: 25px;
+        border: 0;
+        border-radius: 5px;
+
+    }
+
+    .count {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .active {
+        background: #ED774F;
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <h1>To Do List</h1>
+        <P>~Today I need to Do~</P>
+        <div><input @keydown.enter="confirm" v-model="addData.thing" type="text">
+            <button @click="confirm">submit</button>
+        </div>
+        <ul>
+            <li v-for="(item,index) in list" :key="item.id" :class="{ active: item.checked}"
+                @click="item.checked=item.checked===true?false:true"><input @click="item.checked===true?false:true"
+                    v-model="item.checked" type="checkbox">{{item.thing}}
+                <span @click="list.splice(index,1)">×</span>
+            </li>
+        </ul>
+        <div class="count">
+            <div>{{total}}未完成</div>
+            <span>全部</span>
+            <span @click="done">已完成</span>
+            <span @click="todo">未完成</span>
+            <span @click="clear">清除已完成</span>
+        </div>
+
+    </div>
+    <script>
+
+        const defaultList = [{
+            id: 2024 - 1 - 12,
+            thing: "唱歌",
+            checked: false,
+        }]
+        const vm = new Vue({
+            el: '.box',
+            data: {
+                curIndex: 0,
+                count: 0,
+                curList: [{ ...this.list }],
+                addData: {
+                    id: Math.random(),
+                    thing: "",
+                    checked: false,
+                },
+                list: [{
+                    id: 2024 - 1 - 12,
+                    thing: "唱歌",
+                    checked: false,
+                }]
+
+            },
+            methods: {
+                confirm() {
+                    this.list.push(this.addData);
+                    this.addData = {
+                        id: '',
+                        thing: "",
+                        checked: false
+                    }
+                    console.log(this.curList)
+                },
+                done() {
+                    this.list = this.list.filter(item => item.checked)
+                    //  console.log(this.list)
+                },
+                todo() {
+                    this.list = this.list.filter(item => !item.checked)
+                },
+                clear() {
+                    this.list = this.list.filter(item => !item.checked)
+                }
+
+            },
+            computed: {
+                total() {
+                    this.count = 0
+                    this.list.map(item => {
+                        if (!item.checked) {
+                            this.count++
+                        }
+                    })
+                    return this.count
+                },
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

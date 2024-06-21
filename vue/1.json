@@ -1,0 +1,42 @@
+[
+    {
+      "gname": "云南白药",
+      "address": "云南",
+      "num": 3,
+      "regDate": "1371120093221",
+      "price": 36,
+      "state": "发货"
+    },
+    {
+      "gname": "999感冒灵",
+      "address": "北京",
+      "num": 2,
+      "regDate": "1371399948599",
+      "price": 22,
+      "state": "发货"
+    },
+    {
+      "gname": "感康",
+      "address": "河北",
+      "num": 5,
+      "regDate": "1371394846499",
+      "price": 18,
+      "state": "已发货"
+    },
+    {
+      "gname": "板蓝根",
+      "address": "河南",
+      "num": 30,
+      "regDate": "1371394846499",
+      "price": 19,
+      "state": "已发货"
+    },
+    {
+      "gname": "创可贴",
+      "address": "吉林",
+      "num": 80,
+      "regDate": "1371394846499",
+      "price": 7,
+      "state": "已发货"
+    }
+  ]

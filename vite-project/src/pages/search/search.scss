@@ -1,0 +1,26 @@
+@import url(../../common/common.scss);
+.box{
+    display: flex;
+    flex-direction: column;
+    .list{
+        li {
+            padding: 0 10px;
+            display: flex;
+            .img {
+                img {
+                    pointer-events: none;
+                    width: 100px;
+                    
+                }
+            }
+         
+            .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                margin-left: 10px;
+                pointer-events: none;
+            }
+        }
+    }
+}
